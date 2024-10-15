@@ -40,3 +40,24 @@ wordcloud(words = freq_termos$term, freq = freq_termos$n, min.freq = 1,
           colors = brewer.pal(8, "Dark2"), scale=c(1.1, .5))
 
 
+# BarGraph -----------------------------------------------------------
+
+# "Modelos espaciais" - 0
+# "Priorização de áreas" - 0 
+
+
+freq_termos <- data.frame(freq_termos)
+
+#freq_termos[5,1] <- "Modelos espaciais"
+#freq_termos[6,1] <- "Priorização de áreas"
+#freq_termos[5,2] <- 0
+#freq_termos[6,2] <- 0
+
+ggplot(freq_termos, aes(x = term, y = n)) +
+  geom_bar(stat = "identity", fill = "gray70") +
+  labs(title = "Frequência de termos", x = "Fluxo de trabalho", y = "Frequência") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12))
+
+
+
