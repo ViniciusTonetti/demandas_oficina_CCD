@@ -78,11 +78,15 @@ colnames(term_frequencies) <- c("termo","freq")
 
 # word cloud
 set.seed(1234) # For reproducibility
-wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, min.freq = 1,
+WC <- wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, min.freq = 1,
           max.words = 100, random.order = FALSE, rot.per = 0.35,
           colors = brewer.pal(8, "Dark2"), scale=c(2, .5))
 
-################################################################################
 
+setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
+dev.copy(jpeg,"WC.jpeg", width = 29, height = 18, un = "cm", res = 300)
+dev.off()
+
+################################################################################
 
 
