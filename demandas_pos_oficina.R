@@ -33,7 +33,7 @@ termos <- tibble(term = FT)
 freq_termos <- termos %>%
   count(term, sort = TRUE)
 
-# Create the word cloud
+# word cloud
 set.seed(1234) # For reproducibility
 wordcloud(words = freq_termos$term, freq = freq_termos$n, min.freq = 1,
           max.words = 100, random.order = FALSE, rot.per = 0.35,
@@ -58,6 +58,31 @@ ggplot(freq_termos, aes(x = term, y = n)) +
   labs(title = "Frequência de termos", x = "Fluxo de trabalho", y = "Frequência") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12))
+
+
+# WordClud demandas ---------------------------------------------------
+
+words <- c("déficit de vegetação nativa,Código Florestal ,Lei da MA,alta resolução,banco de dados,restauração ecológica,aspectos socioeconômicos,benefícios,SAF,benefícios,disponibilidade hídrica,desenvolvimento da floresta,agricultura,produtividade,áreas vulneráveis,UC,áreas de amortecimento,grandes números,restauração ecológica,PACTO,restauração ecológica,serviços ecossistêmicos,água,energia elétrica,resiliência climática,resiliência climática,produtividade,modelagem,vegetação secundária,PSA,áreas prioritárias,restauração ecológica,produtividade,SAF,silvicultura,degradação,Mata Atlântica,Amazônia,degradação,Mata Atlântica,degradação,restauração ecológica,cobertura florestal,Mata Atlântica,degradação,espécies arbóreas,ameaça,resiliência,UC,resiliência climática,divulgação,conceitos,literatura científica,PSA,pólos florestais,viabilidade econômica,territórios,atores engajados,produtividade,demanda,PSA,benefícios,restauração ecológica,viabilidade econômica,Finaclima,setor público,mapeamento,benefícios,restauração ecológica,território,incentivo,PSA,produtividade,incentivos,viabilidade econômica,restauração ecológica,produtividade,Mata Atlãntica,modelagem,PSA,produtividade,viabilidade econômica,produtividade,restauração ecológica,indígenas,povos tradicionais,produtividade,resolução,escala,variáveis mais finas,restauração ecológica,paisagem")
+
+quoted_words <- words %>%
+  str_split(pattern = ",") %>%
+  unlist()
+
+# word cloud demandas ----------------------------------------------------------
+
+term_frequencies <- quoted_words %>%
+  table() %>%
+  as.data.frame()
+
+colnames(term_frequencies) <- c("termo","freq")
+
+# word cloud
+set.seed(1234) # For reproducibility
+wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, min.freq = 1,
+          max.words = 100, random.order = FALSE, rot.per = 0.35,
+          colors = brewer.pal(8, "Dark2"), scale=c(2, .5))
+
+################################################################################
 
 
 
