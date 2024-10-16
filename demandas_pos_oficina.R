@@ -119,7 +119,7 @@ WC <- wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, mi
 #dev.off()
 
 ################################################################################
-# Bargraph cores pós-docs ------------------------------------------------------
+# Bargraph cores pós-docs Tarefas do quadro ------------------------------------
 
 # Frequência de cores
 
@@ -145,7 +145,8 @@ df_cores  <- df_cores  %>%
 ggplot(df_cores, aes(x = reorder(color, -freq), y = freq, fill = color)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values = color_mapping) +
-  geom_text(aes(label = freq), vjust = -0.5) +  # Add text annotations
+  geom_text(aes(label = freq), vjust = -0.5) +
+  scale_y_continuous(limits = c(0, 9), breaks = c(0, 4.5, 9)) +
   labs(title = "Frequência de cores",
        x = "",
        y = "Frequência") +
@@ -153,3 +154,124 @@ ggplot(df_cores, aes(x = reorder(color, -freq), y = freq, fill = color)) +
   theme(legend.position = "none",
         axis.text.x = element_blank(),
         axis.title.x = element_blank())
+
+#setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
+#dev.copy(jpeg,"4_colors_pos_docs.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.off()
+
+
+
+################################################################################
+# Bargraph cores pós-docs Tarefas FORA do quadro (não selecionadas, backlog)----
+
+# Frequência de cores
+
+# verde - 17
+# cinza - 3
+# amarelo - 11
+
+# data frame feq colors
+
+df_cores <- data.frame(
+  color = c("verde", "cinza", "amarelo"),
+  freq = c(17, 3, 11)
+)
+
+# plot
+
+color_mapping <- c("verde" = "forestgreen", "cinza" = "gray60", "amarelo" = "gold")
+
+df_cores  <- df_cores  %>%
+  arrange(desc(freq))
+
+
+ggplot(df_cores, aes(x = reorder(color, -freq), y = freq, fill = color)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = color_mapping) +
+  geom_text(aes(label = freq), vjust = -0.5) +
+  scale_y_continuous(limits = c(0, 17), breaks = c(0, 8.5, 17)) +
+  labs(title = "Frequência de cores",
+       x = "",
+       y = "Frequência") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank())
+
+#setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
+#dev.copy(jpeg,"5_colors_pos_docs_FORA_PAINEL.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.off()
+
+################################################################################
+# Bargraph cores atribuições ---------------------------------------------------
+
+# Frequência de cores
+
+# pós-docs - 7 (azul claro)
+# Rede atual de associados - 9 (salmão)
+# Outros - 5 (laranja)
+
+# data frame feq colors
+
+df_atribuicoes <- data.frame(
+  color = c("pds", "rede", "outros"),
+  freq = c(7, 9, 5)
+)
+
+# plot
+
+color_mapping <- c("pds" = "#87CEFA", "rede" = "#F2E6E6", "outros" = "#F9BB78")
+
+df_atribuicoes  <- df_atribuicoes  %>%
+  arrange(desc(freq))
+
+
+ggplot(df_atribuicoes, aes(x = reorder(color, -freq), y = freq, fill = color)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = color_mapping) +
+  geom_text(aes(label = freq), vjust = -0.5) +
+  scale_y_continuous(limits = c(0, 9), breaks = c(0, 5.5, 9)) +
+  labs(title = "Frequência de cores",
+       x = "",
+       y = "Frequência") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank())
+
+#setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
+#dev.copy(jpeg,"6_cores_atribuicoes.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.off()
+
+
+################################################################################
+# WordCloud Gargalos
+
+
+palavras_gargalos <- c("GPP,Serviços ecossistêmicos,PACTO,Pesquisador da área social / econômica,PACTO,GPP,Serviços ecossistêmicos,PSA,TEMPO,Pesquisadores associados,Conhecimento sobre as espécies,TEMPO, Pesquisadores associados,TEMPO,Pesquisadores associados,TEMPO,Pesquisadores associados,PSA,Pesquisador da área social / econômica,TEMPO,Pesquisadores associados,Pesquisadores não associados,Modelagem espacial,Pesquisador da área social / econômica, Modelos Econômicos, Restauração ecológica,Pesquisadores associados,TEMPO,Pesquisadores não-associados,Pesquisadores associados,TEMPO,Pesquisadores associados,Pesquisadores não associados")
+
+quoted_words_fp <- palavras_gargalos %>%
+  str_split(pattern = ",") %>%
+  unlist()
+
+# word cloud
+
+term_frequencies <- quoted_words_fp %>%
+  table() %>%
+  as.data.frame()
+
+colnames(term_frequencies) <- c("termo","freq")
+
+set.seed(1234) # For reproducibility
+WC <- wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, min.freq = 1,
+                max.words = 100, random.order = FALSE, rot.per = 0.35,
+                colors = brewer.pal(8, "Dark2"), scale=c(1.5, .5))
+
+#setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
+#dev.copy(jpeg,"7_WC_gargalos.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.off()
+
+
+
+
+
