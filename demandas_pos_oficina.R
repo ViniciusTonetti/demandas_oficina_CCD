@@ -39,12 +39,11 @@ wordcloud(words = freq_termos$term, freq = freq_termos$n, min.freq = 1,
           max.words = 100, random.order = FALSE, rot.per = 0.35,
           colors = brewer.pal(8, "Dark2"), scale=c(1.1, .5))
 
-
-# BarGraph ---------------------------------------------------------------------
+################################################################################
+# BarGraph fluxo de trabalho ---------------------------------------------------
 
 # "Modelos espaciais" - 0
 # "Priorização de áreas" - 0 
-
 
 freq_termos <- data.frame(freq_termos)
 
@@ -59,7 +58,11 @@ ggplot(freq_termos, aes(x = term, y = n)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12))
 
+#setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
+#dev.copy(jpeg,"1_bar_plot_fluxo_trabalho.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.off()
 
+################################################################################
 # WordClud demandas que estão no painel ----------------------------------------
 
 words <- c("déficit de vegetação nativa,Código Florestal ,Lei da MA,alta resolução,banco de dados,restauração ecológica,aspectos socioeconômicos,benefícios,SAF,benefícios,disponibilidade hídrica,desenvolvimento da floresta,agricultura,produtividade,áreas vulneráveis,UC,áreas de amortecimento,grandes números,restauração ecológica,PACTO,restauração ecológica,serviços ecossistêmicos,água,energia elétrica,resiliência climática,resiliência climática,produtividade,modelagem,vegetação secundária,PSA,áreas prioritárias,restauração ecológica,produtividade,SAF,silvicultura,degradação,Mata Atlântica,Amazônia,degradação,Mata Atlântica,degradação,restauração ecológica,cobertura florestal,Mata Atlântica,degradação,espécies arbóreas,ameaça,resiliência,UC,resiliência climática,divulgação,conceitos,literatura científica,PSA,pólos florestais,viabilidade econômica,territórios,atores engajados,produtividade,demanda,PSA,benefícios,restauração ecológica,viabilidade econômica,Finaclima,setor público,mapeamento,benefícios,restauração ecológica,território,incentivo,PSA,produtividade,incentivos,viabilidade econômica,restauração ecológica,produtividade,Mata Atlãntica,modelagem,PSA,produtividade,viabilidade econômica,produtividade,restauração ecológica,indígenas,povos tradicionais,produtividade,resolução,escala,variáveis mais finas,restauração ecológica,paisagem")
@@ -85,14 +88,14 @@ WC <- wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, mi
 
 
 #setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
-#dev.copy(jpeg,"WC_painel.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.copy(jpeg,"2_demandas_individuais_painel.jpeg", width = 20, height = 15, un = "cm", res = 300)
 #dev.off()
 
 ################################################################################
 # WordCloud palavras que estão fora painel
 
 
-words_fp <- c("carbono,vegetação nativa,Estado de São Paulo,distribuição espacial,divulgar,restauração ecológica,município,bacia,escala,cobertura florestal,áreas degradadas,vegetação nativa,UC,viabilidade ecológica,serviços ecossistêmicos,mangue,Estado de São Paulo,mudança do uso da terra,áreas alagadas,mapear,áreas prioritárias,restauração ecológica,mangue,metodologia detalhada,quantificar,serviços ecossistêmicos,Refloresta,decreto,restauração ecológica,polígonos,regeneração natural,IA,colaboração,UFG/LAPIG,LIDAR,carbono,TNC,ferramentas e metodologias,biodiversidade,custo,Estados,Governo Federal,mitigação climática,espécies,restauração ecológica,mudanças climáticas,conectividade,UC, passivo ambiental,gargalos,PACTO,fogo,fitofisioniomias,Mata Atlântica,restauração ecológica,regeneração natural,campos,restingas,manguezais,políticas públicas,PSA,Estado de São Paulo,gargalos,PSA,material didático,restauração ecológica,água,Mata Atlântica,restauração ecológica,Mata Atlântica trinacional,restauração ecológica,crédito de biodiversidade,carbono,SAF,degradação,Mata Atlântica,regeneração natural,modelagem,benefícios,capoeira,desmatamento,PSA,saúde pública,restauração ecológica,restauração ecológica,cidades,custos,impactos socioeconômicos,restauração ecológica,produtos não acadêmicos,policy brief,manuais técnicos,nota técnica,comunidade externa,universidade,sociedade,divulgação,água,biodiversidade,restauração ecológica,componente social,mapas,serviços ecossistêmicos,povos tradicionais,mudanças climáticas,mitigação,restauração ecológica,Mata Atlântica,vulnerabilidade da vegetação,UC,mudanças climáticas,áreas prioritárias,conservação,orçamento,monitoramento,áreas prioritárias,biodiversidade,regeneração natural,modelagem,IA")
+words_fp <- c("carbono,vegetação nativa,Estado de São Paulo,distribuição espacial,divulgar,restauração ecológica,município,bacia,escala,cobertura florestal,áreas degradadas,vegetação nativa,UC,viabilidade ecológica,serviços ecossistêmicos,manguezais,Estado de São Paulo,mudança do uso da terra,áreas alagadas,mapear,áreas prioritárias,restauração ecológica,manguezais,metodologia detalhada,quantificar,serviços ecossistêmicos,Refloresta,decreto,restauração ecológica,polígonos,regeneração natural,IA,colaboração,UFG/LAPIG,LIDAR,carbono,TNC,ferramentas e metodologias,biodiversidade,custo,Estados,Governo Federal,mitigação climática,espécies,restauração ecológica,mudanças climáticas,conectividade,UC, passivo ambiental,gargalos,PACTO,fogo,fitofisioniomias,Mata Atlântica,restauração ecológica,regeneração natural,campos,restingas,manguezais,políticas públicas,PSA,Estado de São Paulo,gargalos,PSA,material didático,restauração ecológica,água,Mata Atlântica,restauração ecológica,Mata Atlântica trinacional,restauração ecológica,crédito de biodiversidade,carbono,SAF,degradação,Mata Atlântica,regeneração natural,modelagem,benefícios,capoeira,desmatamento,PSA,saúde pública,restauração ecológica,restauração ecológica,cidades,custos,impactos socioeconômicos,restauração ecológica,produtos não acadêmicos,policy brief,manuais técnicos,nota técnica,comunidade externa,universidade,sociedade,divulgação,água,biodiversidade,restauração ecológica,componente social,mapas,serviços ecossistêmicos,povos tradicionais,mudanças climáticas,mitigação,restauração ecológica,Mata Atlântica,vulnerabilidade da vegetação,UC,mudanças climáticas,áreas prioritárias,conservação,orçamento,monitoramento,áreas prioritárias,biodiversidade,regeneração natural,modelagem,IA")
 
 quoted_words_fp <- words_fp %>%
   str_split(pattern = ",") %>%
@@ -100,7 +103,7 @@ quoted_words_fp <- words_fp %>%
 
 # word cloud
 
-term_frequencies <- quoted_words %>%
+term_frequencies <- quoted_words_fp %>%
   table() %>%
   as.data.frame()
 
@@ -112,9 +115,41 @@ WC <- wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, mi
                 colors = brewer.pal(8, "Dark2"), scale=c(2, .5))
 
 #setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
-#dev.copy(jpeg,"WC_fora_painel.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.copy(jpeg,"3_demandas_individuais_fora_painel.jpeg", width = 20, height = 15, un = "cm", res = 300)
 #dev.off()
 
 ################################################################################
+# Bargraph cores pós-docs ------------------------------------------------------
+
+# Frequência de cores
+
+# verde - 9
+# cinza - 5
+# amarelo - 7
+
+# data frame feq colors
+
+df_cores <- data.frame(
+  color = c("verde", "cinza", "amarelo"),
+  freq = c(9, 5, 7)
+)
+
+# plot
+
+color_mapping <- c("verde" = "forestgreen", "cinza" = "gray60", "amarelo" = "gold")
+
+df_cores  <- df_cores  %>%
+  arrange(desc(freq))
 
 
+ggplot(df_cores, aes(x = reorder(color, -freq), y = freq, fill = color)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = color_mapping) +
+  geom_text(aes(label = freq), vjust = -0.5) +  # Add text annotations
+  labs(title = "Frequência de cores",
+       x = "",
+       y = "Frequência") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank())
