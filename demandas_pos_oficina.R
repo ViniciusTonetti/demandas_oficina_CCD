@@ -116,7 +116,7 @@ WC <- wordcloud(words = term_frequencies$termo, freq = term_frequencies$freq, mi
 
 
 #setwd("D:/_Vinicius/pos doc/_estrategia_Mata_Atlantica/Oficina de coprodução/reuniao_pos")
-#dev.copy(jpeg,"WC_painel.jpeg", width = 20, height = 15, un = "cm", res = 300)
+#dev.copy(jpeg,"WC_fora_painel.jpeg", width = 20, height = 15, un = "cm", res = 300)
 #dev.off()
 
 ################################################################################
